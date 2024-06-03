@@ -12,6 +12,12 @@ import { toast } from "sonner";
 import Image from "next/image";
 import React from "react";
 
+// Define the Message type
+type Message = {
+  role: string;
+  content: string;
+};
+
 const examples = [
   "Check the current SAP ECC inventory.",
   "Gather Hubspot sales leads",
@@ -23,7 +29,7 @@ export default function Chat() {
   const formRef = useRef<HTMLFormElement>(null);
   const inputRef = useRef<HTMLTextAreaElement>(null);
 
-  const [messages, setMessages] = useState([]);
+  const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
@@ -31,9 +37,8 @@ export default function Chat() {
     e.preventDefault();
     if (!input.trim()) return;
 
-    const newMessage = { role: "user", content: input };
-    console.log("User message:", newMessage);
-    setMessages((prevMessages) => [...prevMessages, newMessage]);
+    const newMessage: Message = { role: "user", content: input };
+    setMessages((prevMessages: Message[]) => [...prevMessages, newMessage]);
     setInput("");
     setIsLoading(true);
 
@@ -52,7 +57,10 @@ export default function Chat() {
       const data = await response.json();
       console.log("Response data:", data); // Debugging: Log the response data
       if (response.status === 200) {
-        const assistantMessage = { role: "assistant", content: data.reply };
+        const assistantMessage: Message = {
+          role: "assistant",
+          content: data.reply,
+        };
         console.log("Assistant message:", assistantMessage); // Debugging: Log the assistant message
         setMessages((prevMessages) => {
           const updatedMessages = [...prevMessages, assistantMessage];
@@ -74,7 +82,7 @@ export default function Chat() {
       toast.error("Something went wrong. Please try again.");
       va.track("Chat errored", {
         input,
-        error: error.message,
+        error: "Error",
       });
     } finally {
       setIsLoading(false);
