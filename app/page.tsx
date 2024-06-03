@@ -10,6 +10,7 @@ import remarkGfm from "remark-gfm";
 import Textarea from "react-textarea-autosize";
 import { toast } from "sonner";
 import Image from "next/image";
+import React from "react";
 
 const examples = [
   "Check the current SAP ECC inventory.",
@@ -151,9 +152,7 @@ export default function Chat() {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="font-medium underline underline-offset-4 transition-colors hover:text-black"
-                >
-                  open-source
-                </a>{" "}
+                ></a>{" "}
                 AI chatbot built using{" "}
                 <a
                   href="https://docs.langchain4j.dev/"
