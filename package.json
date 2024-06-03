@@ -1,7 +1,8 @@
 {
-  "name": "chathn",
-  "version": "0.1.0",
+  "name": "mulechain-agent",
+  "version": "1.0.0",
   "private": true,
+  "description": "An AI chatbot built with MuleChain and running on the Anypoint Platform.",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
