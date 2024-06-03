@@ -140,7 +140,7 @@ export default function Chat() {
           </div>
         ))
       ) : (
-        <div className="mx-5 mt-20 max-w-screen-md rounded-md border border-gray-200 sm:mx-0 sm:w-full">
+        <div className="mx-5 mt-5 max-w-screen-md rounded-md border border-gray-200 sm:mx-0 sm:mt-20 sm:w-full">
           <div className="flex flex-col items-center p-5 sm:flex-row sm:p-10">
             <Image
               src="/images/logo.png"
